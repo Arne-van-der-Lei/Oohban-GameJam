@@ -23,9 +23,10 @@ public class World : Singleton<World> {
             }
         }
         AddBlock(2, 4, 2, 4);
-        AddBlock(2, 3, 2, 2);
-        AddBlock(1, 3, 2, 2);
-        AddBlock(0, 2, 2, 2);
+        AddBlock(2, 3, 2, 7);
+        AddBlock(1, 3, 2, 7);
+        AddBlock(0, 2, 2, 7);
+        AddBlock(1, 2, 2, 1);
         transform.position = offset;
     }
 	
