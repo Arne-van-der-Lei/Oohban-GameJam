@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class Picker : MonoBehaviour {
 
+    public GameObject pointer;
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
         Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = Mathf.Infinity;
-
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, mousePosition - Camera.main.ScreenToWorldPoint(mousePosition), Mathf.Infinity);
-
-        if (Input.GetMouseButton(1))
+        RaycastHit hit;
+        Physics.Raycast(Camera.main.ScreenToWorldPoint(mousePosition),Camera.main.transform.forward,out hit, Mathf.Infinity);
+        pointer.transform.position = hit.point;
+        
+        if (Input.GetMouseButton(0))
         {
-            hit.collider.SendMessage("onClick", hit.normal);
+            hit.collider.SendMessage("OnClick",SendMessageOptions.DontRequireReceiver);
         }
     }
 }
