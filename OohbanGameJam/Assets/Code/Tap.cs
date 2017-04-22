@@ -7,6 +7,7 @@ public class Tap : Block {
     public float UpdateTime = 1.0f;
     float counter = 0.0f;
     public bool IsOn = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +17,7 @@ public class Tap : Block {
 	void Update () {
         counter += Time.deltaTime;
 
-        if(counter >= UpdateTime)
+        if(counter >= UpdateTime && IsOn )
         {
             WaterAmount = MaxWaterAmount;
             counter -= UpdateTime;
@@ -24,8 +25,9 @@ public class Tap : Block {
         }
 	}
 
-    void OnClick()
+    public void OnClick()
     {
-
+        IsOn = !IsOn;
+        Debug.Log("hi");
     }
 }

@@ -31,16 +31,13 @@ public class Block : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Renderer = GetComponent<MeshRenderer>();
-        WaterObj = Instantiate(WaterPrefab, transform).GetComponent<WaterChanger>() ;
+        GameObject gameObject = Instantiate(WaterPrefab, transform.position,Quaternion.identity);
+        WaterObj = gameObject.GetComponent<WaterChanger>();
+        gameObject.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Renderer != null)
-        {
-            WaterObj.ChangeMesh(WaterAmount / MaxWaterAmount);
-            //Renderer.material.color = new Color(WaterAmount, WaterAmount, WaterAmount, 1.0f);
-        }
 	}
 
     void AddWater(sides sideInput, float amount)
@@ -50,10 +47,13 @@ public class Block : MonoBehaviour {
             if (WaterAmount + amount > MaxWaterAmount)
             {
                 WaterAmount = MaxWaterAmount;
-            }else
+            }
+            else
             {
                 WaterAmount += amount;
             }
+
+            WaterObj.ChangeMesh(WaterAmount / MaxWaterAmount);
 
             if (WaterAmount >= MaxWaterAmount/2.0f)
             {
