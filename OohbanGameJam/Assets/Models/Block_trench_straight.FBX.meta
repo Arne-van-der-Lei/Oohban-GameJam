@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d5aaaad13cace5646bc6eee72bbe49cb
-timeCreated: 1492850120
+guid: 721f37e33ee061545804aa51b0249ac3
+timeCreated: 1492855195
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box003
-    4300002: block_trench_cross
+    4300000: Block_trench_straight
     9500000: //RootNode
   materials:
     importMaterials: 1
