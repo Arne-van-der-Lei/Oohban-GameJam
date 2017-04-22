@@ -6,7 +6,7 @@ public class Tap : Block {
 
     public float UpdateTime = 1.0f;
     float counter = 0.0f;
-
+    public bool IsOn = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -23,4 +23,9 @@ public class Tap : Block {
             UpdateSides();
         }
 	}
+
+    void OnClick()
+    {
+
+    }
 }
