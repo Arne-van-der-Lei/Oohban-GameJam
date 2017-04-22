@@ -25,17 +25,21 @@ public class Block : MonoBehaviour {
 
     protected float WaterAmount = 0.0f;
     private MeshRenderer Renderer;
+    public GameObject WaterPrefab;
+    public WaterChanger WaterObj;
 
     // Use this for initialization
     void Start () {
         Renderer = GetComponent<MeshRenderer>();
+        WaterObj = Instantiate(WaterPrefab, transform).GetComponent<WaterChanger>() ;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (Renderer != null)
         {
-            Renderer.material.color = new Color(WaterAmount, WaterAmount, WaterAmount, 1.0f);
+            WaterObj.ChangeMesh(WaterAmount / MaxWaterAmount);
+            //Renderer.material.color = new Color(WaterAmount, WaterAmount, WaterAmount, 1.0f);
         }
 	}
 
