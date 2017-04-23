@@ -20,7 +20,7 @@ public class WaterChanger : MonoBehaviour {
 		
 	}
 
-    public void ChangeMesh(float value)
+    virtual public void ChangeMesh(float value,Block.sides side)
     {
         if (value >= 1.00f)
         {

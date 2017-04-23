@@ -15,19 +15,21 @@ public class Tap : Block {
 	
 	// Update is called once per frame
 	void Update () {
-        counter += Time.deltaTime;
-
-        if(counter >= UpdateTime && IsOn )
+        if (IsOn)
         {
-            WaterAmount = MaxWaterAmount;
-            counter -= UpdateTime;
-            UpdateSides();
+            counter += Time.deltaTime;
+
+            if (counter >= UpdateTime)
+            {
+                WaterAmount = MaxWaterAmount;
+                counter -= UpdateTime;
+                UpdateSides();
+            }
         }
 	}
 
     public void OnClick()
     {
         IsOn = !IsOn;
-        Debug.Log("hi");
     }
 }
