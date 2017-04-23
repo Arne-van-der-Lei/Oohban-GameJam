@@ -19,10 +19,10 @@ public class Tap : Block {
             {
                 WaterAmount = MaxWaterAmount;
                 counter -= UpdateTime;
-                UpdateSides();
             }
         }
-	}
+        UpdateSides();
+    }
 
     public void OnClick()
     {
