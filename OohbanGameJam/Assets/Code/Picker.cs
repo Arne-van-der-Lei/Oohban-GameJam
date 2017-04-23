@@ -14,8 +14,8 @@ public class Picker : MonoBehaviour {
 
         Vector3 mousePosition = Input.mousePosition;
         RaycastHit hit;
-        Physics.Raycast(Camera.main.ScreenToWorldPoint(mousePosition),Camera.main.transform.forward,out hit, Mathf.Infinity);
-        pointer.transform.position = hit.point;
+        Physics.Raycast(Camera.main.ScreenPointToRay(mousePosition),out hit, Mathf.Infinity);
+        //pointer.transform.position = hit.point;
         
         if (Input.GetMouseButtonDown(0) && hit.collider != null)
         {
