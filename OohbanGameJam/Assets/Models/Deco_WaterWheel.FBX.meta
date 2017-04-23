@@ -6,10 +6,25 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Deco_Iron_bar
+    100004: Deco_Wood
+    100006: Deco_Wood_Wheel
     400000: //RootNode
+    400002: Deco_Iron_bar
+    400004: Deco_Wood
+    400006: Deco_Wood_Wheel
     2300000: //RootNode
+    2300002: Deco_Iron_bar
+    2300004: Deco_Wood
+    2300006: Deco_Wood_Wheel
     3300000: //RootNode
+    3300002: Deco_Iron_bar
+    3300004: Deco_Wood
+    3300006: Deco_Wood_Wheel
     4300000: Cylinder001
+    4300002: Deco_Wood_Wheel
+    4300004: Deco_Iron_bar
+    4300006: Deco_Wood
     9500000: //RootNode
   materials:
     importMaterials: 1

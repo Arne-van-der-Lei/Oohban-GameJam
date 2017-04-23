@@ -27,8 +27,11 @@ public class World : Singleton<World> {
             {
                 for (int k = 0; k < size.z; ++k)
                 {
-                    if(block[i,j,k] == null)
-                        AddBlock(i, j, k, Air);
+                    if (block[i, j, k] == null)
+                    {
+                        GameObject air = Instantiate(Air, new Vector3(i, j, k), Air.transform.rotation);
+                        AddBlock(i, j, k, air);
+                    }
                 }
             }
         }
