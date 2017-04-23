@@ -93,17 +93,17 @@ public class Block : MonoBehaviour {
         float amountToOutput = MaxWaterFlow / amountOfOutputs;
 
         if (LeftOutput) {
-            Block block = World.Instance.GetBlock((int)(transform.position.x  - World.Instance.offset.x) - 1, (int)(transform.position.y - World.Instance.offset.y), (int)(transform.position.z - World.Instance.offset.z));
+            Block block = World.Instance.GetBlock((int)(transform.position.x) - 1, (int)(transform.position.y), (int)(transform.position.z));
             if (block != null) block.AddWater(sides.Right, amountToOutput);
         }
         if (RightOutput)
         {
-            Block block = World.Instance.GetBlock((int)(transform.position.x - World.Instance.offset.x), (int)(transform.position.y - World.Instance.offset.y), (int)(transform.position.z  - World.Instance.offset.z) - 1);
+            Block block = World.Instance.GetBlock((int)(transform.position.x), (int)(transform.position.y), (int)(transform.position.z) - 1);
             if (block != null) block.AddWater(sides.Left, amountToOutput);
         }
         if (BottomOutput)
         {
-            Block block = World.Instance.GetBlock((int)(transform.position.x - World.Instance.offset.x), (int)(transform.position.y - World.Instance.offset.y) - 1, (int)(transform.position.z - World.Instance.offset.z));
+            Block block = World.Instance.GetBlock((int)(transform.position.x), (int)(transform.position.y) - 1, (int)(transform.position.z));
             if (block != null) block.AddWater(sides.Top, amountToOutput);
         }
         WaterAmount -= MaxWaterFlow;

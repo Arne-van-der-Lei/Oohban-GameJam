@@ -7,31 +7,33 @@ public class World : Singleton<World> {
     Block[,,] block;
     public Vector3 size = new Vector3(5, 5, 5);
     public Vector3 offset = new Vector3(-2.5f, -2.5f, -2.5f);
-    public GameObject[] PrefabList;
+    public GameObject Air;
     public GameObject canvas;
 
 	// Use this for initialization
 	void Start () {
         block = new Block[(int)size.x, (int)size.y, (int)size.z];
-        for(int i = 0; i < size.x; ++i)
+
+        GameObject[] list = GameObject.FindGameObjectsWithTag("Block");
+
+        foreach(GameObject obj in list)
+        {
+            AddBlock((int)obj.transform.position.x, (int)obj.transform.position.y, (int)obj.transform.position.z, obj);
+        }
+
+        for (int i = 0; i < size.x; ++i)
         {
             for (int j = 0; j < size.y; ++j)
             {
                 for (int k = 0; k < size.z; ++k)
                 {
-                    AddBlock(i, j, k, 0);
+                    if(block[i,j,k] == null)
+                        AddBlock(i, j, k, Air);
                 }
             }
         }
-        AddBlock(3, 4, 2, 4);
-        AddBlock(3, 3, 2, 7);
-        AddBlock(2, 3, 2, 7);
-        AddBlock(1, 3, 2, 7);
-        AddBlock(0, 3, 2, 10);
-        AddBlock(0, 2, 2, 11);
-        transform.position = offset;
 
-        canvas = GameObject.FindGameObjectWithTag("Canvas");
+        canvas = GameObject.Find("Canvas");
         canvas.SetActive(false);
     }
 	
@@ -40,20 +42,17 @@ public class World : Singleton<World> {
 		
 	}
 
-    public void AddBlock(int x, int y, int z, int id)
+    public void AddBlock(int x, int y, int z, GameObject bloc)
     {
-        if (block[x, y, z] != null) Destroy(block[x, y, z]);
-
-        GameObject BlockObj = Instantiate(PrefabList[id]) ;
-        block[x, y, z] = BlockObj.GetComponent<Block>();
-        block[x, y, z].transform.position = new Vector3(x, y, z);
-        block[x, y, z].transform.parent = transform;
+        if (block[x, y, z] != null) DestroyImmediate(block[x, y, z].gameObject);
+        
+        block[x, y, z] = bloc.GetComponent<Block>();
     }
 
     public Block GetBlock(int x, int y, int z)
     {
         if(x >= 0 && y >= 0 && z >= 0)
-            return block[x, y, z];
+            return block[x, y, z];  
         return null;
     }
 
