@@ -31,9 +31,9 @@ public class Block : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         Renderer = GetComponent<MeshRenderer>();
-        GameObject gameObject = Instantiate(WaterPrefab, transform.position,WaterPrefab.transform.rotation);
-        WaterObj = gameObject.GetComponent<WaterChanger>();
-        gameObject.transform.parent = transform;
+        //GameObject gameObject = Instantiate(WaterPrefab, transform.position,WaterPrefab.transform.rotation);
+        //WaterObj = gameObject.GetComponent<WaterChanger>();
+        //gameObject.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
