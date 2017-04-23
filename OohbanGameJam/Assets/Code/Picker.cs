@@ -10,14 +10,14 @@ public class Picker : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
         Vector3 mousePosition = Input.mousePosition;
         RaycastHit hit;
         Physics.Raycast(Camera.main.ScreenToWorldPoint(mousePosition),Camera.main.transform.forward,out hit, Mathf.Infinity);
         pointer.transform.position = hit.point;
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0) && hit.collider != null)
         {
             hit.collider.SendMessage("OnClick",SendMessageOptions.DontRequireReceiver);
         }

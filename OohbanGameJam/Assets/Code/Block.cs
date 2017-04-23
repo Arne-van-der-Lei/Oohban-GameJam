@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Block : MonoBehaviour {
 
-    enum sides
+    public enum sides
     {
         Top,
         Right,
@@ -29,9 +29,9 @@ public class Block : MonoBehaviour {
     public WaterChanger WaterObj;
 
     // Use this for initialization
-    void Start () {
+    protected virtual void Start () {
         Renderer = GetComponent<MeshRenderer>();
-        GameObject gameObject = Instantiate(WaterPrefab, transform.position,Quaternion.identity);
+        GameObject gameObject = Instantiate(WaterPrefab, transform.position,WaterPrefab.transform.rotation);
         WaterObj = gameObject.GetComponent<WaterChanger>();
         gameObject.transform.parent = transform;
 	}
@@ -53,7 +53,9 @@ public class Block : MonoBehaviour {
                 WaterAmount += amount;
             }
 
-            WaterObj.ChangeMesh(WaterAmount / MaxWaterAmount);
+            WaterObj.ChangeMesh(WaterAmount / MaxWaterAmount,sideInput);
+
+            OnChangeWater();
 
             if (WaterAmount >= MaxWaterAmount/2.0f)
             {
@@ -106,4 +108,6 @@ public class Block : MonoBehaviour {
         }
         WaterAmount -= MaxWaterFlow;
     }
+
+    protected virtual void OnChangeWater() { }
 }

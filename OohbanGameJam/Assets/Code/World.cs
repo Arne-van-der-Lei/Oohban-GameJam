@@ -8,6 +8,7 @@ public class World : Singleton<World> {
     public Vector3 size = new Vector3(5, 5, 5);
     public Vector3 offset = new Vector3(-2.5f, -2.5f, -2.5f);
     public GameObject[] PrefabList;
+    public GameObject canvas;
 
 	// Use this for initialization
 	void Start () {
@@ -22,12 +23,16 @@ public class World : Singleton<World> {
                 }
             }
         }
-        AddBlock(2, 4, 2, 4);
+        AddBlock(3, 4, 2, 4);
+        AddBlock(3, 3, 2, 7);
         AddBlock(2, 3, 2, 7);
         AddBlock(1, 3, 2, 7);
-        AddBlock(0, 2, 2, 7);
-        AddBlock(1, 2, 2, 1);
+        AddBlock(0, 3, 2, 10);
+        AddBlock(0, 2, 2, 11);
         transform.position = offset;
+
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+        canvas.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -50,5 +55,10 @@ public class World : Singleton<World> {
         if(x >= 0 && y >= 0 && z >= 0)
             return block[x, y, z];
         return null;
+    }
+
+    public void LevelEnd()
+    {
+        canvas.SetActive(true);
     }
 }
