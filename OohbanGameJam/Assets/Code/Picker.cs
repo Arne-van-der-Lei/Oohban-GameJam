@@ -17,7 +17,7 @@ public class Picker : MonoBehaviour {
         Physics.Raycast(Camera.main.ScreenToWorldPoint(mousePosition),Camera.main.transform.forward,out hit, Mathf.Infinity);
         pointer.transform.position = hit.point;
         
-        if (Input.GetMouseButtonUp(0) && hit.collider != null)
+        if (Input.GetMouseButtonDown(0) && hit.collider != null)
         {
             hit.collider.SendMessage("OnClick",SendMessageOptions.DontRequireReceiver);
         }

@@ -7,11 +7,7 @@ public class Tap : Block {
     public float UpdateTime = 1.0f;
     float counter = 0.0f;
     public bool IsOn = false;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+    
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,5 +27,7 @@ public class Tap : Block {
     public void OnClick()
     {
         IsOn = !IsOn;
+        Update();
+        Debug.Log("Clicked");
     }
 }

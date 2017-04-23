@@ -29,7 +29,7 @@ public class Block : MonoBehaviour {
     public WaterChanger WaterObj;
 
     // Use this for initialization
-    void Start () {
+    protected virtual void Start () {
         Renderer = GetComponent<MeshRenderer>();
         GameObject gameObject = Instantiate(WaterPrefab, transform.position,WaterPrefab.transform.rotation);
         WaterObj = gameObject.GetComponent<WaterChanger>();
@@ -56,6 +56,7 @@ public class Block : MonoBehaviour {
             WaterObj.ChangeMesh(WaterAmount / MaxWaterAmount,sideInput);
 
             OnChangeWater();
+
             if (WaterAmount >= MaxWaterAmount/2.0f)
             {
                 UpdateSides();

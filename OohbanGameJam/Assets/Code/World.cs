@@ -27,12 +27,12 @@ public class World : Singleton<World> {
         AddBlock(3, 3, 2, 7);
         AddBlock(2, 3, 2, 7);
         AddBlock(1, 3, 2, 7);
-        AddBlock(1, 3, 2, 7);
         AddBlock(0, 3, 2, 10);
         AddBlock(0, 2, 2, 11);
         transform.position = offset;
 
         canvas = GameObject.FindGameObjectWithTag("Canvas");
+        canvas.SetActive(false);
     }
 	
 	// Update is called once per frame
