@@ -14,7 +14,14 @@ public class WaterGate : WaterChanger {
     {
         if(Ison)
         {
-            transform.rotation = Quaternion.Euler(-90, 0, 90);
+            if (side == Block.sides.Right)
+            {
+                transform.rotation = Quaternion.Euler(-90, 0, 90);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(-90, 0, -90);
+            }
         }
         else
         {

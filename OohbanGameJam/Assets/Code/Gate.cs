@@ -32,7 +32,8 @@ public class Gate : MonoBehaviour {
             block.LeftOutput = LeftFrontOn;
             block.RightOutput = RightFrontOn;
             transform.localRotation = Quaternion.Euler(-90, 90, 0);
-            water.Ison = true;
+            if(water!= null)
+                water.Ison = true;
         }
         else
         {
@@ -41,7 +42,8 @@ public class Gate : MonoBehaviour {
             block.LeftOutput = LeftFrontOff;
             block.RightOutput = RightFrontOff;
             transform.localRotation = Quaternion.Euler(-90, 0, 0);
-            water.Ison = false;
+            if (water != null)
+                water.Ison = false;
         }
 
 	}
