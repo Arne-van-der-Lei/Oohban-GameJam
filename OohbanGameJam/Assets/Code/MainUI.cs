@@ -37,4 +37,9 @@ public class MainUI : MonoBehaviour {
     {
     	SceneManager.LoadScene("Level 3");
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
