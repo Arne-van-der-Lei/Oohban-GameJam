@@ -16,7 +16,8 @@ public class WaterBucket : WaterChanger {
 
     public override void ChangeMesh(float value, Block.sides side)
     {
-        if(value >= 0.5f)
+        transform.rotation = Quaternion.Euler(new Vector3(-90, 90, 0));
+        if (value >= 0.5f)
         {
             MeshFiter.mesh = mesh25;
         }

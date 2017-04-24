@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c01d7851509a3fc4a9e36557c4d03a92
-timeCreated: 1492960656
+guid: 066f6de85d64437479a4f504d8189729
+timeCreated: 1492972195
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: NGon001
+    4300000: Deco_Gate_Button
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -23,22 +23,25 @@ public class Block : MonoBehaviour {
     public float MaxWaterAmount = 1.0f;
     public float MaxWaterFlow = 0.2f;
 
-    protected float WaterAmount = 0.0f;
-    private MeshRenderer Renderer;
     public GameObject WaterPrefab;
     public WaterChanger WaterObj;
 
+    public float WaterAmount { get { return waterAmount;} }
+
+
+    protected float waterAmount = 0.0f;
+
     // Use this for initialization
     protected virtual void Start () {
-        Renderer = GetComponent<MeshRenderer>();
-        //GameObject gameObject = Instantiate(WaterPrefab, transform.position,WaterPrefab.transform.rotation);
-        //WaterObj = gameObject.GetComponent<WaterChanger>();
-        //gameObject.transform.parent = transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	}
+        if (waterAmount >= MaxWaterAmount / 2.0f)
+        {
+            UpdateSides();
+        }
+    }
 
     void AddWater(sides sideInput, float amount)
     {
@@ -46,21 +49,16 @@ public class Block : MonoBehaviour {
         {
             if (WaterAmount + amount > MaxWaterAmount)
             {
-                WaterAmount = MaxWaterAmount;
+                waterAmount = MaxWaterAmount;
             }
             else
             {
-                WaterAmount += amount;
+                waterAmount += amount;
             }
 
             WaterObj.ChangeMesh(WaterAmount / MaxWaterAmount,sideInput);
 
             OnChangeWater();
-
-            if (WaterAmount >= MaxWaterAmount/2.0f)
-            {
-                UpdateSides();
-            }
         }
     }
 
@@ -88,8 +86,7 @@ public class Block : MonoBehaviour {
         if (RightOutput) amountOfOutputs++;
         if (BottomOutput) amountOfOutputs++;
 
-        if (amountOfOutputs == 0) return;
-
+        if (amountOfOutputs == 0 || WaterAmount <= 0) return;
         float amountToOutput = MaxWaterFlow / amountOfOutputs;
 
         if (LeftOutput) {
@@ -103,10 +100,11 @@ public class Block : MonoBehaviour {
         }
         if (BottomOutput)
         {
-            Block block = World.Instance.GetBlock((int)(transform.position.x), (int)(transform.position.y) - 1, (int)(transform.position.z));
+            Block block = World.Instance.GetBlock((int)(transform.position.x), (int)(transform.position.y)-1, (int)(transform.position.z));
             if (block != null) block.AddWater(sides.Top, amountToOutput);
         }
-        WaterAmount -= MaxWaterFlow;
+
+        waterAmount -= MaxWaterFlow;
     }
 
     protected virtual void OnChangeWater() { }

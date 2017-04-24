@@ -18,10 +18,13 @@ public class Tap : Block {
         {
             if (IsOn)
             {
-                WaterAmount = MaxWaterAmount;
+                waterAmount = MaxWaterFlow;
             }
             counter -= UpdateTime;
-            UpdateSides();
+            if (WaterAmount >= 0)
+            {
+                UpdateSides();
+            }
         }
 }
 

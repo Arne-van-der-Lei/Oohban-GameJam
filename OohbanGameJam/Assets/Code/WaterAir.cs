@@ -20,7 +20,9 @@ public class WaterAir : WaterChanger {
         if(side  == Block.sides.Right)
         {
             transform.rotation = Quaternion.Euler(new Vector3(-90, 180, 0));
-            if (value >= 0.5f) {
+            if (value >= 0.5f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(-90, 180, 180));
                 MeshFiter.mesh = mesh50;
             }
             else if(value >= 0.25f)
@@ -33,6 +35,7 @@ public class WaterAir : WaterChanger {
             transform.rotation = Quaternion.Euler(new Vector3(-90, 90, 0));
             if (value >= 0.5f)
             {
+                transform.rotation = Quaternion.Euler(new Vector3(-90, 90, 180));
                 MeshFiter.mesh = mesh50;
             }
             else if (value >= 0.25f)

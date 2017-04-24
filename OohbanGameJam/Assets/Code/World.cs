@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class World : Singleton<World> {
 
@@ -37,7 +39,7 @@ public class World : Singleton<World> {
         }
 
         canvas = GameObject.Find("Canvas");
-        canvas.SetActive(false);
+        //canvas.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -61,6 +63,6 @@ public class World : Singleton<World> {
 
     public void LevelEnd()
     {
-        canvas.SetActive(true);
+        SceneManager.LoadScene("levelSelectorUI");
     }
 }

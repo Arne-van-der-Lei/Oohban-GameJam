@@ -5,18 +5,11 @@ using UnityEngine;
 public class FinishBlock : Block {
 
     // Use this for initialization
-    protected override void Start () {
-        base.Start();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    protected override void OnChangeWater()
+
+    public void Update()
     {
-        if(WaterAmount >= 0.5f)
+        if (WaterAmount >= 0.5f)
         {
             World.Instance.LevelEnd();
         }
